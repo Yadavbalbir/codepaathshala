@@ -140,106 +140,232 @@ export default function Footer() {
                                 {/* Security & Compliance */}
                                 <div className="p-6 bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-xl border border-white/10 rounded-2xl">
                                     <Typography variant="h6" className="font-bold text-white mb-4 flex items-center">
-                        <Grid item xs={12} md={6} lg={3}>
-                            <Typography variant="h6" className="font-bold text-white mb-6">
-                                Get in Touch
-                            </Typography>
-                            <div className="space-y-4">
-                                <div className="flex items-center space-x-3">
-                                    <EmailIcon className="text-emerald-400" />
-                                    <Link 
-                                        href="mailto:contact@codepaathshala.com"
-                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline"
-                                    >
-                                        contact@codepaathshala.com
-                                    </Link>
-                                </div>
-                                
-                                <div className="flex items-center space-x-3">
-                                    <PhoneIcon className="text-emerald-400" />
-                                    <Link 
-                                        href="tel:+1-555-123-4567"
-                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline"
-                                    >
-                                        +1 (555) 123-4567
-                                    </Link>
-                                </div>
-                                
-                                <div className="flex items-start space-x-3">
-                                    <LocationOnIcon className="text-emerald-400 mt-1" />
-                                    <Typography variant="body2" className="text-slate-400">
-                                        123 Innovation Drive<br />
-                                        Tech Valley, CA 94025<br />
-                                        United States
+                                        <ShieldIcon className="mr-2 text-emerald-400" />
+                                        Enterprise Security
                                     </Typography>
-                                </div>
-
-                                {/* Security Badges */}
-                                <div className="mt-6 pt-4 border-t border-slate-700">
-                                    <Typography variant="body2" className="text-slate-400 mb-3">
-                                        Security & Compliance
-                                    </Typography>
-                                    <div className="flex items-center space-x-4">
-                                        <div className="flex items-center space-x-2 bg-slate-800 px-3 py-2 rounded-lg">
-                                            <SecurityIcon className="text-emerald-400 text-sm" />
-                                            <Typography variant="caption" className="text-white font-semibold">
-                                                SOC 2
+                                    <div className="grid grid-cols-2 gap-3">
+                                        <div className="flex items-center space-x-2 bg-slate-800/70 px-4 py-3 rounded-xl border border-white/5">
+                                            <SecurityIcon className="text-emerald-400 text-lg" />
+                                            <Typography variant="caption" className="text-white font-bold">
+                                                SOC 2 Type II
                                             </Typography>
                                         </div>
-                                        <div className="flex items-center space-x-2 bg-slate-800 px-3 py-2 rounded-lg">
-                                            <VerifiedIcon className="text-blue-400 text-sm" />
-                                            <Typography variant="caption" className="text-white font-semibold">
+                                        <div className="flex items-center space-x-2 bg-slate-800/70 px-4 py-3 rounded-xl border border-white/5">
+                                            <VerifiedIcon className="text-blue-400 text-lg" />
+                                            <Typography variant="caption" className="text-white font-bold">
                                                 ISO 27001
+                                            </Typography>
+                                        </div>
+                                        <div className="flex items-center space-x-2 bg-slate-800/70 px-4 py-3 rounded-xl border border-white/5">
+                                            <ShieldIcon className="text-violet-400 text-lg" />
+                                            <Typography variant="caption" className="text-white font-bold">
+                                                GDPR Ready
+                                            </Typography>
+                                        </div>
+                                        <div className="flex items-center space-x-2 bg-slate-800/70 px-4 py-3 rounded-xl border border-white/5">
+                                            <CloudIcon className="text-cyan-400 text-lg" />
+                                            <Typography variant="caption" className="text-white font-bold">
+                                                Cloud Secure
                                             </Typography>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </Grid>
+
+                        {/* Navigation Links */}
+                        <Grid item xs={12} lg={8}>
+                            <Grid container spacing={6}>
+                                {/* Platform */}
+                                <Grid item xs={12} sm={6} md={3}>
+                                    <Typography variant="h6" className="font-bold text-white mb-6 text-lg">
+                                        Platform
+                                    </Typography>
+                                    <div className="space-y-4">
+                                        {[
+                                            { name: "Features", path: "/#features" },
+                                            { name: "Pricing", path: "/pricing" },
+                                            { name: "Enterprise", path: "/enterprise" },
+                                            { name: "API Documentation", path: "/api" },
+                                            { name: "Integration", path: "/integration" },
+                                            { name: "Security", path: "/security" }
+                                        ].map((link) => (
+                                            <div key={link.name}>
+                                                <Link
+                                                    component={RouterLink}
+                                                    to={link.path}
+                                                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 no-underline block py-1 hover:translate-x-2 transform"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </Grid>
+
+                                {/* Solutions */}
+                                <Grid item xs={12} sm={6} md={3}>
+                                    <Typography variant="h6" className="font-bold text-white mb-6 text-lg">
+                                        Solutions
+                                    </Typography>
+                                    <div className="space-y-4">
+                                        {[
+                                            { name: "For Universities", path: "/solutions/universities" },
+                                            { name: "For Bootcamps", path: "/solutions/bootcamps" },
+                                            { name: "For Corporations", path: "/solutions/corporate" },
+                                            { name: "For K-12 Schools", path: "/solutions/k12" },
+                                            { name: "Online Assessments", path: "/solutions/assessments" },
+                                            { name: "Remote Proctoring", path: "/solutions/proctoring" }
+                                        ].map((link) => (
+                                            <div key={link.name}>
+                                                <Link
+                                                    component={RouterLink}
+                                                    to={link.path}
+                                                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 no-underline block py-1 hover:translate-x-2 transform"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </Grid>
+
+                                {/* Resources */}
+                                <Grid item xs={12} sm={6} md={3}>
+                                    <Typography variant="h6" className="font-bold text-white mb-6 text-lg">
+                                        Resources
+                                    </Typography>
+                                    <div className="space-y-4">
+                                        {[
+                                            { name: "Documentation", path: "/docs" },
+                                            { name: "Video Tutorials", path: "/tutorials" },
+                                            { name: "Blog & Insights", path: "/blog" },
+                                            { name: "Case Studies", path: "/case-studies" },
+                                            { name: "Webinars", path: "/webinars" },
+                                            { name: "Help Center", path: "/help" }
+                                        ].map((link) => (
+                                            <div key={link.name}>
+                                                <Link
+                                                    component={RouterLink}
+                                                    to={link.path}
+                                                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 no-underline block py-1 hover:translate-x-2 transform"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </Grid>
+
+                                {/* Contact & Support */}
+                                <Grid item xs={12} sm={6} md={3}>
+                                    <Typography variant="h6" className="font-bold text-white mb-6 text-lg">
+                                        Support
+                                    </Typography>
+                                    <div className="space-y-4 mb-8">
+                                        {[
+                                            { name: "Contact Sales", path: "/contact" },
+                                            { name: "Technical Support", path: "/support" },
+                                            { name: "Partner Program", path: "/partners" },
+                                            { name: "About Us", path: "/about" },
+                                            { name: "Careers", path: "/careers" },
+                                            { name: "Press Kit", path: "/press" }
+                                        ].map((link) => (
+                                            <div key={link.name}>
+                                                <Link
+                                                    component={RouterLink}
+                                                    to={link.path}
+                                                    className="text-slate-400 hover:text-emerald-400 transition-all duration-300 no-underline block py-1 hover:translate-x-2 transform"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Contact Info */}
+                                    <div className="space-y-4">
+                                        <div className="flex items-center space-x-3">
+                                            <EmailIcon className="text-emerald-400" />
+                                            <Link 
+                                                href="mailto:enterprise@codepaathshala.com"
+                                                className="text-slate-300 hover:text-emerald-400 transition-colors duration-300 no-underline font-medium"
+                                            >
+                                                enterprise@codepaathshala.com
+                                            </Link>
+                                        </div>
+                                        
+                                        <div className="flex items-center space-x-3">
+                                            <PhoneIcon className="text-emerald-400" />
+                                            <Link 
+                                                href="tel:+1-800-CODEPAL"
+                                                className="text-slate-300 hover:text-emerald-400 transition-colors duration-300 no-underline font-medium"
+                                            >
+                                                +1 (800) CODE-PAL
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </Grid>
                     </Grid>
                 </Container>
 
-                <Divider className="border-slate-700" />
+                {/* Bottom Bar */}
+                <div className="border-t border-slate-700/50 bg-slate-900/80 backdrop-blur-xl relative z-10">
+                    <Container maxWidth="xl" className="py-8">
+                        <div className="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0">
+                            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
+                                <Typography variant="body1" className="text-slate-300 font-medium">
+                                    © 2024 CodePaathshala Inc. All rights reserved.
+                                </Typography>
+                                <div className="flex flex-wrap justify-center md:justify-start space-x-6">
+                                    <Link
+                                        component={RouterLink}
+                                        to="/privacy"
+                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm font-medium"
+                                    >
+                                        Privacy Policy
+                                    </Link>
+                                    <Link
+                                        component={RouterLink}
+                                        to="/terms"
+                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm font-medium"
+                                    >
+                                        Terms of Service
+                                    </Link>
+                                    <Link
+                                        component={RouterLink}
+                                        to="/accessibility"
+                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm font-medium"
+                                    >
+                                        Accessibility
+                                    </Link>
+                                    <Link
+                                        component={RouterLink}
+                                        to="/cookies"
+                                        className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm font-medium"
+                                    >
+                                        Cookie Policy
+                                    </Link>
+                                </div>
+                            </div>
 
-                <Container maxWidth="xl" className="py-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-                            <Typography variant="body2" className="text-slate-400">
-                                © 2024 CodePaathshala. All rights reserved.
-                            </Typography>
-                            <div className="flex space-x-6">
-                                <Link
-                                    component={RouterLink}
-                                    to="/privacy"
-                                    className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm"
-                                >
-                                    Privacy Policy
-                                </Link>
-                                <Link
-                                    component={RouterLink}
-                                    to="/terms"
-                                    className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm"
-                                >
-                                    Terms of Service
-                                </Link>
-                                <Link
-                                    component={RouterLink}
-                                    to="/cookies"
-                                    className="text-slate-400 hover:text-emerald-400 transition-colors duration-300 no-underline text-sm"
-                                >
-                                    Cookie Policy
-                                </Link>
+                            <div className="flex items-center space-x-6">
+                                <div className="flex items-center space-x-2">
+                                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                                    <Typography variant="body2" className="text-slate-300 font-medium">
+                                        All Systems Operational
+                                    </Typography>
+                                </div>
+                                <div className="h-4 w-px bg-slate-600"></div>
+                                <Typography variant="body2" className="text-slate-400">
+                                    Made with ❤️ for Educators
+                                </Typography>
                             </div>
                         </div>
-
-                        <div className="flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                            <Typography variant="body2" className="text-slate-400">
-                                System Status: All systems operational
-                            </Typography>
-                        </div>
-                    </div>
-                </Container>
+                    </Container>
+                </div>
             </footer>
         </Box>
     );
