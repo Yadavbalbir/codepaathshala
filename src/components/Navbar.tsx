@@ -41,7 +41,7 @@ export interface NavItem {
 }
 
 const NAVITEMS: NavItem[] = [
-  { title: "Dashboard", redirectUrl: "registered-batches", icon: <DashboardIcon /> },
+  { title: "Dashboard", redirectUrl: "dashboard", icon: <DashboardIcon /> },
   { title: "Live Tests", redirectUrl: "assessment", icon: <QuizIcon /> },
   { title: "Courses", redirectUrl: "courses", icon: <SchoolIcon /> },
 ];

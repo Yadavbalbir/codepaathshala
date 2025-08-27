@@ -1,13 +1,13 @@
 import { LessonType } from "./enum";
 
 export const ApiConstants = {
-  baseApiUrl: "https://be.codingjudge.com/",
-  baseSocketUrl: "be.codingjudge.com",
+  baseApiUrl: process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:8000/",
+  baseSocketUrl: process.env.REACT_APP_SOCKET_URL || "127.0.0.1:8000",
   accounts: {
     register: "accounts/register/",
     login: "accounts/login/",
     profileDetails: "accounts/profile/",
-    assosiatedBatches: "api/user-registered-batches/",
+    assosiatedBatches: "api/my-courses",
     changePassword: "accounts/change-password/",
     resetPassword: "accounts/set-new-password/",
     sendOTP: "accounts/reset-password/",

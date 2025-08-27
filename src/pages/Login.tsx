@@ -60,7 +60,7 @@ export default function Login() {
                     delete res.data.message;
                     authContext.setUser(res.data);
                     localStorage.setItem("profileData", JSON.stringify(res.data));
-                    window.location.href = uid ? `/registered-batches/${uid}` : "/registered-batches";
+                    window.location.href = uid ? `/dashboard/${uid}` : "/dashboard";
                 }
                 setLoading(prevState => !prevState);
             })

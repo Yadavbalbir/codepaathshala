@@ -74,7 +74,7 @@ const routes: RouteObject[] = [
     element: <Home />,
   },
   {
-    path: "registered-batches",
+    path: "dashboard",
     element: <AuthorizedRoute />,
     children: [
       {
