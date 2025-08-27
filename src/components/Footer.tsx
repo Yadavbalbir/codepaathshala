@@ -31,58 +31,6 @@ export default function Footer() {
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-violet-400/3 to-purple-500/3 rounded-full blur-3xl animate-pulse delay-2000"></div>
                 </div>
 
-                {/* Top Section with CTA */}
-                <div className="relative z-10 border-b border-slate-700/50">
-                    <Container maxWidth="xl" className="py-20">
-                        <div className="text-center mb-16">
-                            <Typography variant="h2" className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-white via-blue-200 to-emerald-200 bg-clip-text text-transparent">
-                                Ready to Get Started?
-                            </Typography>
-                            <Typography variant="h5" className="text-slate-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                                Join thousands of educators transforming coding education with our enterprise platform.
-                            </Typography>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link component={RouterLink} to="/register" className="no-underline">
-                                    <button className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-2xl shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-white/20">
-                                        Start Free Trial
-                                    </button>
-                                </Link>
-                                <Link component={RouterLink} to="/contact" className="no-underline">
-                                    <button className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-bold py-4 px-8 rounded-2xl transform hover:scale-105 transition-all duration-300 backdrop-blur-sm">
-                                        Contact Sales
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* Key Metrics */}
-                        <Grid container spacing={4} className="mb-16">
-                            {[
-                                { icon: <TrendingUpIcon className="text-2xl" />, number: "99.9%", label: "Uptime SLA", gradient: "from-emerald-400 to-teal-500" },
-                                { icon: <SpeedIcon className="text-2xl" />, number: "< 2s", label: "Response Time", gradient: "from-blue-400 to-indigo-500" },
-                                { icon: <SupportAgentIcon className="text-2xl" />, number: "24/7", label: "Expert Support", gradient: "from-violet-400 to-purple-500" },
-                                { icon: <AutoAwesomeIcon className="text-2xl" />, number: "50K+", label: "Active Users", gradient: "from-amber-400 to-orange-500" }
-                            ].map((metric, index) => (
-                                <Grid item xs={6} md={3} key={index}>
-                                    <Card className="bg-slate-800/50 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:scale-105 group cursor-pointer rounded-2xl">
-                                        <CardContent className="p-6 text-center">
-                                            <div className={`mb-3 flex justify-center group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${metric.gradient} bg-clip-text text-transparent`}>
-                                                {metric.icon}
-                                            </div>
-                                            <Typography variant="h4" className="font-black text-white mb-1">
-                                                {metric.number}
-                                            </Typography>
-                                            <Typography variant="body2" className="text-slate-400 group-hover:text-slate-300 transition-colors duration-300">
-                                                {metric.label}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Container>
-                </div>
-
                 {/* Main Footer Content */}
                 <Container maxWidth="xl" className="py-20 relative z-10">
                     <Grid container spacing={10}>

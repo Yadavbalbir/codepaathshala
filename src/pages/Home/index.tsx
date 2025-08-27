@@ -223,37 +223,35 @@ export default function Home() {
                 >
                   CodePaathshala
                 </Typography>
-                
-                {/* Subtitle with Typewriter */}
-                <Typography 
-                  variant="h2" 
-                  className="text-2xl md:text-4xl lg:text-5xl font-bold mb-8 text-slate-300"
-                >
-                  Revolutionizing{" "}
-                  <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
-                    <Type
-                      options={{
-                        cursorClassName: "hidden",
-                        wrapperClassName: "inline",
-                        strings: ["Education", "Assessment", "Learning", "Development", "Innovation"],
-                        autoStart: true,
-                        loop: true,
-                        delay: "natural",
-                        deleteSpeed: 50,
-                      }}
-                    />
-                  </span>
-                </Typography>
 
-                {/* Description */}
-                <Typography 
-                  variant="h6" 
-                  className="text-lg md:text-xl text-slate-400 mb-16 max-w-4xl mx-auto leading-relaxed font-normal"
-                >
-                  Experience the future of coding education with cutting-edge AI proctoring, 
-                  real-time performance analytics, and intelligent assessment tools designed 
-                  for the modern digital era.
-                </Typography>
+                {/* Hero Subtitle & Description */}
+                <div className="text-center mb-16">
+                  <Typography 
+                    variant="h2" 
+                    className="text-2xl md:text-4xl lg:text-5xl font-bold text-slate-300 mb-4"
+                  >
+                    Revolutionizing{' '}
+                    <span className="bg-gradient-to-r from-emerald-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
+                      <Type
+                        options={{
+                          cursorClassName: "hidden",
+                          wrapperClassName: "inline",
+                          strings: ["Education", "Assessment", "Learning", "Development", "Innovation"],
+                          autoStart: true,
+                          loop: true,
+                          delay: "natural",
+                          deleteSpeed: 50,
+                        }}
+                      />
+                    </span>
+                  </Typography>
+                  <Typography 
+                    variant="h5" 
+                    className="text-slate-400 font-normal"
+                  >
+                    Experience the future of coding education with cutting-edge AI proctoring, real-time performance analytics, and intelligent assessment tools designed for the modern digital era.
+                  </Typography>
+                </div>
 
                 {/* Hero Features Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
@@ -365,7 +363,7 @@ export default function Home() {
                 <Typography variant="h2" className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-emerald-400 via-blue-400 to-violet-400 bg-clip-text text-transparent">
                   Powerful Features
                 </Typography>
-                <Typography variant="h5" className="text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed">
+                <Typography variant="h5" className="text-slate-400 font-normal mb-6">
                   Discover cutting-edge tools designed to transform your coding education experience
                 </Typography>
               </div>
@@ -549,15 +547,20 @@ export default function Home() {
                   Ready to Transform Your Coding Education?
                 </Typography>
                 
-                <Typography 
-                  variant="h4" 
-                  className="text-xl md:text-2xl text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed font-normal"
-                >
-                  Join thousands of educators and students experiencing the future of coding assessment. 
-                  <span className="block mt-2 bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent font-semibold">
+                <div className="flex flex-col items-center">
+                  <Typography 
+                    variant="h4" 
+                    className="text-xl md:text-2xl text-slate-300 mb-2 max-w-4xl mx-auto leading-relaxed font-normal"
+                  >
+                    Join thousands of educators and students experiencing the future of coding assessment. 
+                  </Typography>
+                  <Typography 
+                    variant="h4" 
+                    className="text-xl md:text-2xl text-slate-300 mb-16 max-w-4xl mx-auto leading-relaxed font-normal bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent font-semibold"
+                  >
                     Start your journey with enterprise-grade tools today.
-                  </span>
-                </Typography>
+                  </Typography>
+                </div>
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
