@@ -4,7 +4,6 @@ import {TabContext, TabList, TabPanel} from "@mui/lab";
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Tab from "@mui/material/Tab";
 import LockResetOutlinedIcon from "@mui/icons-material/LockResetOutlined";
-import SwipeableViews from "react-swipeable-views";
 import {useTheme} from "@mui/material/styles";
 import EditProfileForm from "components/Form/EditProfile";
 import {User} from "../../_utils/interface";
@@ -15,9 +14,6 @@ export default function SidePanel({user, batchList}: {user: Partial<User>, batch
     const theme = useTheme();
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
-    };
-    const handleChangeIndex = (index: number) => {
-        setValue(index.toString());
     };
 
     return <>
@@ -42,18 +38,12 @@ export default function SidePanel({user, batchList}: {user: Partial<User>, batch
                              value="1"/>
                     </TabList>
                 </Box>
-                <SwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={parseInt(value)}
-                    onChangeIndex={handleChangeIndex}
-                >
-                    <TabPanel value={value.toString()} dir={theme.direction}>
-                        <EditProfileForm batchList={batchList} user={user} type={"Edit"}/>
-                    </TabPanel>
-                    <TabPanel value={value.toString()} dir={theme.direction}>
-                        <ChangePasswordForm edit={true} user={user}/>
-                    </TabPanel>
-                </SwipeableViews>
+                <TabPanel value="0" dir={theme.direction}>
+                    <EditProfileForm batchList={batchList} user={user} type={"Edit"}/>
+                </TabPanel>
+                <TabPanel value="1" dir={theme.direction}>
+                    <ChangePasswordForm edit={true} user={user}/>
+                </TabPanel>
             </TabContext>
         </Box>
     </>

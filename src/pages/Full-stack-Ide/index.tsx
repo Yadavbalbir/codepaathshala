@@ -15,7 +15,6 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import TabComponent from "components/TabsComponent/TabComponent";
 import { Box, Tab, Tooltip, useTheme } from "@mui/material";
 import { Css, Html, Javascript } from "@mui/icons-material";
-import SwipeableViews from "react-swipeable-views";
 import Editor from "components/ProgramIDE/full-stack-editor/Editor";
 import PrevNext from "components/prevNext/prevnext";
 import "index.css";
@@ -471,49 +470,43 @@ function FullStackIde({
                       />
                     </TabList>
                   </Box>
-                  <SwipeableViews
-                    axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-                    index={parseInt(value)}
-                    onChangeIndex={handleChangeIndex}
-                  >
-                    <TabPanel value={value.toString()} dir={theme.direction}>
-                      <div>
-                        <Editor
-                          theme={"vs-dark"}
-                          language={"html"}
-                          codes={htmlCode}
-                          id="61"
-                          onCodeChange={handleHtmlChange}
-                          disableCopyPaste={true}
-                        />
-                      </div>
-                    </TabPanel>
-                    <TabPanel value={value.toString()} dir={theme.direction}>
-                      <div>
-                        <Editor
-                          theme={"vs-dark"}
-                          language={"css"}
-                          codes={cssCode}
-                          id="61"
-                          onCodeChange={handleCssChange}
-                          disableCopyPaste={true}
-                        />
-                      </div>
-                    </TabPanel>
+                  <TabPanel value="0" dir={theme.direction}>
+                    <div>
+                      <Editor
+                        theme={"vs-dark"}
+                        language={"html"}
+                        codes={htmlCode}
+                        id="61"
+                        onCodeChange={handleHtmlChange}
+                        disableCopyPaste={true}
+                      />
+                    </div>
+                  </TabPanel>
+                  <TabPanel value="1" dir={theme.direction}>
+                    <div>
+                      <Editor
+                        theme={"vs-dark"}
+                        language={"css"}
+                        codes={cssCode}
+                        id="61"
+                        onCodeChange={handleCssChange}
+                        disableCopyPaste={true}
+                      />
+                    </div>
+                  </TabPanel>
 
-                    <TabPanel value={value.toString()} dir={theme.direction}>
-                      <div>
-                        <Editor
-                          theme={"vs-dark"}
-                          language={"javascript"}
-                          codes={jsCode}
-                          id="61"
-                          onCodeChange={handleJsChange}
-                          disableCopyPaste={true}
-                        />
-                      </div>
-                    </TabPanel>
-                  </SwipeableViews>
+                  <TabPanel value="2" dir={theme.direction}>
+                    <div>
+                      <Editor
+                        theme={"vs-dark"}
+                        language={"javascript"}
+                        codes={jsCode}
+                        id="61"
+                        onCodeChange={handleJsChange}
+                        disableCopyPaste={true}
+                      />
+                    </div>
+                  </TabPanel>
                 </TabContext>
               </Box>
               <div className="flex items-center justify-end space-x-3 mb-4">

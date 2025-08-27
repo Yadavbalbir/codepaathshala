@@ -1,5 +1,4 @@
 import { PROBLEMDATA } from "../../_utils/interface";
-import SwipeableViews from 'react-swipeable-views'; 
 import { useTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -40,9 +39,6 @@ export default function TabComponent({ problem }: { problem: PROBLEMDATA }) {
         setValue(newValue);
     };
 
-    const handleChangeIndex = (index: number) => {
-        setValue(index.toString());
-    };
     const showSubmissionDetails = (judgment: any, submission_date: any, source_code: any, text_source: any, file: any) => {
         setSubmissionDetails({ judgment, submission_date, source_code, text_source, file }) as any;
     };
@@ -124,10 +120,11 @@ export default function TabComponent({ problem }: { problem: PROBLEMDATA }) {
     const [contentHidden, setContentHidden] = useState<boolean>(isMobile);
 
     const renderTabPanel = (index: number, children: any) => (
-        <div className={theme.direction === 'rtl' ? 'x-reverse' : 'x'} hidden={index !== parseInt(value)} dir={theme.direction} style={{ padding: 0 }}>
+        <div className={`${parseInt(value) === index ? 'block' : 'hidden'} h-98-custom py-1`}>
             {children}
         </div>
     );
+
     return <>
         <ToastContainer />
 
@@ -262,83 +259,76 @@ export default function TabComponent({ problem }: { problem: PROBLEMDATA }) {
                         </div> : null}
 
                     <div className={(isMobile && contentHidden) ? 'hidden' : ''}>
-                        <SwipeableViews
-                            className={'h-98-custom py-1'}
-                            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                            index={parseInt(value)}
-                            onChangeIndex={handleChangeIndex}
-                        >
-                            {renderTabPanel(0, (
-                                <div className="mb-3 mx-3">
-                                    {!isMobile &&
-                                        <p className="mt-3 flex mx-3">
-                                            <Tooltip title={DifficultyLevel[problem?.difficulty_level ?? 1]}>
-                                                <img src={DifficultyLevelIcon[problem?.difficulty_level ?? 1]} alt={DifficultyLevel[problem?.difficulty_level ?? 1]} className="h-6 w-6" />
-                                            </Tooltip>
-                                            <span className="text-2xl text-secondary-800 font-bold mb-4 ms-3 ">{problem.title}</span>
-                                        </p>
-                                    }
-                                    <div dangerouslySetInnerHTML={{ __html: problem?.description ? problem?.description : " " }} className="description mb-4 mx-3 text-justify"></div>
-                                    {problem.img_urls && problem.img_urls.map((img, index) => (
-                                        <img alt={problem.title} src={img} key={index} />
-                                    ))}
-                                    <div className="grid grid-cols-12 gap-5 mx-2 mt-4">
-                                        {(problem?.input_format !== "NA" || !problem?.input_format) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
-                                            <div className="col-span-12 sm:col-span-6 bg-primary-50 border border-1 border-primary-200 rounded-xl p-2">
-                                                <p className="text-xl font-bold text-secondary-800">
-                                                    Input Format
-                                                    <br />
-                                                    <span className="break-words text-base text-justify" dangerouslySetInnerHTML={{ __html: problem?.input_format ?? "" }} style={{ whiteSpace: 'pre-wrap' }}></span>
-                                                </p>
-                                            </div>
-                                        )}
-                                        {(problem.output_format !== "NA" || !problem?.output_format) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
-                                            <div className="col-span-12 sm:col-span-6 bg-primary-50 border border-1 border-primary-200 rounded-xl p-2">
-                                                <p className="text-xl font-bold text-secondary-800">
-                                                    Output Format
-                                                    <br />
-                                                    <span className="break-words text-base text-justify" dangerouslySetInnerHTML={{ __html: problem?.output_format ?? "" }} style={{ whiteSpace: 'pre-wrap' }}></span>
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {(problem.constraints !== "NA" || !problem?.constraints) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
-                                        <div className="mx-3 my-4">
+                        {renderTabPanel(0, (
+                            <div className="mb-3 mx-3">
+                                {!isMobile &&
+                                    <p className="mt-3 flex mx-3">
+                                        <Tooltip title={DifficultyLevel[problem?.difficulty_level ?? 1]}>
+                                            <img src={DifficultyLevelIcon[problem?.difficulty_level ?? 1]} alt={DifficultyLevel[problem?.difficulty_level ?? 1]} className="h-6 w-6" />
+                                        </Tooltip>
+                                        <span className="text-2xl text-secondary-800 font-bold mb-4 ms-3 ">{problem.title}</span>
+                                    </p>
+                                }
+                                <div dangerouslySetInnerHTML={{ __html: problem?.description ? problem?.description : " " }} className="description mb-4 mx-3 text-justify"></div>
+                                {problem.img_urls && problem.img_urls.map((img, index) => (
+                                    <img alt={problem.title} src={img} key={index} />
+                                ))}
+                                <div className="grid grid-cols-12 gap-5 mx-2 mt-4">
+                                    {(problem?.input_format !== "NA" || !problem?.input_format) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
+                                        <div className="col-span-12 sm:col-span-6 bg-primary-50 border border-1 border-primary-200 rounded-xl p-2">
                                             <p className="text-xl font-bold text-secondary-800">
-                                                Constraints
+                                                Input Format
+                                                <br />
+                                                <span className="break-words text-base text-justify" dangerouslySetInnerHTML={{ __html: problem?.input_format ?? "" }} style={{ whiteSpace: 'pre-wrap' }}></span>
                                             </p>
-                                            <p className="break-words text-justify" style={{ whiteSpace: 'pre-wrap' }}>{problem?.constraints}</p>
+                                        </div>
+                                    )}
+                                    {(problem.output_format !== "NA" || !problem?.output_format) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
+                                        <div className="col-span-12 sm:col-span-6 bg-primary-50 border border-1 border-primary-200 rounded-xl p-2">
+                                            <p className="text-xl font-bold text-secondary-800">
+                                                Output Format
+                                                <br />
+                                                <span className="break-words text-base text-justify" dangerouslySetInnerHTML={{ __html: problem?.output_format ?? "" }} style={{ whiteSpace: 'pre-wrap' }}></span>
+                                            </p>
                                         </div>
                                     )}
                                 </div>
-                            ))}
-                            {renderTabPanel(1, (
-                                <Discussion id={problem.id} lesson_type={problem.lesson_type} batch_name={problem?.batch_name} />
-                            ))}
-                            {renderTabPanel(2, (
-                                ![LessonType.VIDEO].includes(problem?.lesson_type) && (
-                                    [LessonType.PROBLEM, LessonType.ASSIGNMENT].includes(problem.lesson_type) ? (
-                                        <div className={`h-96 overflow-y-scroll mx-3 mt-3 ${isGreaterThan2xl ? 'h-full' : ''}`}>
-                                            {submissionDetails ? (
-                                                <SubmissionDetails {...submissionDetails} />
-                                            ) : (
-                                                <SubmissionTable prevSubmissions={problem?.previous_submissions} showSubmissionDetails={showSubmissionDetails} />
-                                            )}
-                                            {!problem?.previous_submissions?.length && <p>No submissions yet.</p>}
-                                        </div>
-                                    ) : (
-                                        <div className="mt-3 mx-3">
-                                            <label className="mt-3 text-xl text-secondary-900 font-bold">Live Preview:</label>
-                                            <iframe srcDoc={problem.srcDoc} title="output" sandbox="allow-scripts" width="100%" height="420px" className="border border-primary-200 rounded rounded-xl mt-3" />
-                                        </div>
-                                    )
+
+                                {(problem.constraints !== "NA" || !problem?.constraints) && ![LessonType.VIDEO, LessonType.ASSIGNMENT].includes(problem?.lesson_type) && (
+                                    <div className="mx-3 my-4">
+                                        <p className="text-xl font-bold text-secondary-800">
+                                            Constraints
+                                        </p>
+                                        <p className="break-words text-justify" style={{ whiteSpace: 'pre-wrap' }}>{problem?.constraints}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                        {renderTabPanel(1, (
+                            <Discussion id={problem.id} lesson_type={problem.lesson_type} batch_name={problem?.batch_name} />
+                        ))}
+                        {renderTabPanel(2, (
+                            ![LessonType.VIDEO].includes(problem?.lesson_type) && (
+                                [LessonType.PROBLEM, LessonType.ASSIGNMENT].includes(problem.lesson_type) ? (
+                                    <div className={`h-96 overflow-y-scroll mx-3 mt-3 ${isGreaterThan2xl ? 'h-full' : ''}`}>
+                                        {submissionDetails ? (
+                                            <SubmissionDetails {...submissionDetails} />
+                                        ) : (
+                                            <SubmissionTable prevSubmissions={problem?.previous_submissions} showSubmissionDetails={showSubmissionDetails} />
+                                        )}
+                                        {!problem?.previous_submissions?.length && <p>No submissions yet.</p>}
+                                    </div>
+                                ) : (
+                                    <div className="mt-3 mx-3">
+                                        <label className="mt-3 text-xl text-secondary-900 font-bold">Live Preview:</label>
+                                        <iframe srcDoc={problem.srcDoc} title="output" sandbox="allow-scripts" width="100%" height="420px" className="border border-primary-200 rounded rounded-xl mt-3" />
+                                    </div>
                                 )
-                            ))}
-                            {renderTabPanel(3, (
-                                <BugReport id={problem.id} title={problem.title} lesson_type={problem.lesson_type} />
-                            ))}
-                        </SwipeableViews>
+                            )
+                        ))}
+                        {renderTabPanel(3, (
+                            <BugReport id={problem.id} title={problem.title} lesson_type={problem.lesson_type} />
+                        ))}
                     </div>
 
                 </TabContext>
