@@ -6,7 +6,6 @@ import Footer from "components/Footer";
 import AuthProvider from "./hooks/AuthProvider";
 import { Provider as ReactReduxProvider } from 'react-redux';
 import { store } from "./state";
-import IdleTimerComponent from 'components/idle-timer';
 
 function App() {
 

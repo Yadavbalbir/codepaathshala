@@ -1,10 +1,9 @@
 import React from "react";
-import {Navigate, Outlet, useLocation} from "react-router-dom";
+import {Navigate, Outlet} from "react-router-dom";
 import {useAuth} from "hooks/AuthProvider";
 
 export default function AuthorizedRoute({isDashboard}: {isDashboard?: boolean}) {
     const user = useAuth();
-    const location = useLocation();
     // if((location.pathname?.includes("manage/batch") || location.pathname.includes("manage/content"))) {
     //     return <Navigate to={"/manage/students"}/>
     // }

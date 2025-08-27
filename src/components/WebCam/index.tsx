@@ -4,8 +4,7 @@ import * as FaceDetection from '@mediapipe/face_detection';
 import Webcam from 'react-webcam';
 import * as CameraUtils from '@mediapipe/camera_utils';
 import { FaceDetectionEnum } from "../../_utils/enum";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 function WebCamComponent({ width, height, faceDetected, showBorder = true, inAssessment = false, faceDetectionError }: {
     width: number,
     height: number,
@@ -15,7 +14,6 @@ function WebCamComponent({ width, height, faceDetected, showBorder = true, inAss
     faceDetectionError?: (data: { errorType: FaceDetectionEnum, message: string }) => void
 }) {
     const [webcamAccessed, setWebcamAccessed] = useState(false);
-    const [lastToastTime, setLastToastTime] = useState(0);
 
     const videoConstraints = {
         width: width,
@@ -54,7 +52,7 @@ function WebCamComponent({ width, height, faceDetected, showBorder = true, inAss
 
         return () => {
         };
-    }, []);
+    }, [faceDetected]);
 
     useEffect(() => {
         if (!isLoading && inAssessment) {
@@ -74,7 +72,7 @@ function WebCamComponent({ width, height, faceDetected, showBorder = true, inAss
             }
         }
         faceDetected(detected);
-    }, [facesDetected, detected, isLoading]);
+    }, [facesDetected, detected, isLoading, faceDetected, faceDetectionError, inAssessment]);
 
     useEffect(() => {
     }, [webcamAccessed, isLoading, facesDetected, detected, boundingBox]);

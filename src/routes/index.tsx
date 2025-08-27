@@ -64,8 +64,8 @@ const AssessmentResult = Loadable(
 const InterViewPreparation = Loadable(
   lazy(() => import("pages/InterviewPractice"))
 );
-const AdminDashboard = Loadable(lazy(() => import("pages/AdminDashboard")));
-const VideoUploader = Loadable(lazy(() => import("components/VideoUploader")));
+// const AdminDashboard = Loadable(lazy(() => import("pages/AdminDashboard")));
+// const VideoUploader = Loadable(lazy(() => import("components/VideoUploader")));
 const TextIde = Loadable(lazy(() => import("pages/Text-Ide")));
 const routes: RouteObject[] = [
   {

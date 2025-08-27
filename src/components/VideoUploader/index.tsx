@@ -1,5 +1,5 @@
 import { ApiConstants } from "_utils/api-constants";
-import { FolderItem, ProfileDataInterface, UploadVideo } from "_utils/interface";
+import { FolderItem, UploadVideo } from "_utils/interface";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Button, Modal, Box, TextField, Select, MenuItem } from "@mui/material";
 import { Bounce, toast, ToastContainer } from "react-toastify";
@@ -320,8 +320,14 @@ function VideoUploader({ batchName, weekNumber, clientId, projectId, handleRespo
                                                 {item.label} ({item.totalItems}) {item.videos && (<span>Videos and No folder</span>)}
                                             </span>
                                             <div className="flex justify-end align-end">
-                                                <Button onClick={() => (handleOpenModal(false), setState(prevState => ({ ...prevState, selectedSubFolder: item.value })))}>Add Video</Button>
-                                                <Button onClick={() => (handleOpenModal(true), setState(prevState => ({ ...prevState, selectedSubFolder: item.value })))} className="flex justify-end align-end">Add Subfolder</Button>
+                                                <Button onClick={() => {
+                                                    handleOpenModal(false);
+                                                    setState(prevState => ({ ...prevState, selectedSubFolder: item.value }));
+                                                }}>Add Video</Button>
+                                                <Button onClick={() => {
+                                                    handleOpenModal(true);
+                                                    setState(prevState => ({ ...prevState, selectedSubFolder: item.value }));
+                                                }} className="flex justify-end align-end">Add Subfolder</Button>
                                             </div>
                                         </li>
                                     ))}
